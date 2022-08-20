@@ -1,0 +1,52 @@
+.Home-gift-icon-container {
+  height: 50%;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+
+.Home-Gift-icon {
+  max-height: 24px;
+  max-width: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 20%;
+  width: 20%;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+
+.Home-Khwish-card-header {
+  text-align: center;
+  font-family: Roboto;
+  -webkit-text-fill-color: rgb(76, 111, 214);
+}
+
+.Home-Khwish-card-text {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto;
+  font-size: 16px;
+  text-align: center;
+}
+
+.Google-Play-image-container {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.Google-Play-image {
+  height: 50%;
+  width: 40%;
+}
+
+@media screen and (min-width: 650px) {
+  .Home-main {
+    min-height: 100vh;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+    height: 100%;
+  }
+}
