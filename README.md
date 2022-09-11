@@ -13,7 +13,7 @@ This is the contributors' frontend for the Khwish platform, which does the follo
 
 ### Select Goal and Amount
 ![Select Goal/Wish](images/2.png)
-![Select/Enter Amount](images/3.png)
+![Select/Enter Amount](images/3.jpg)
 <br><br>
 
 ### Payment Failure/Success
