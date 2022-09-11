@@ -1,5 +1,5 @@
-import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import { Card } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 const KhwishCard = withStyles({
   root: {

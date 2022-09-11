@@ -3,10 +3,9 @@ import "./Home.css";
 import KhwishCard from "../../components/KhwishCard";
 import KhwishIcon from "../../assets/khwish-icon.png";
 import GitHubBadge from "../../assets/github-badge.png";
-import CardContent from "@material-ui/core/CardContent";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { Button, CardContent } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 const TestButton = withStyles({
   root: {
@@ -43,8 +42,8 @@ class Home extends React.Component {
         </KhwishCard>
 
         <div className="Sample-flow-button-container">
-          <TestButton className="Sample-flow-button" variant="contained" onClick={() => {useNavigate("/gift?event-id=dummy-event-id");}}>
-            How this works
+          <TestButton className="Sample-flow-button" variant="contained" >
+              How this works
           </TestButton>
         </div>
 

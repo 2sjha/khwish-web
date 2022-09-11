@@ -3,12 +3,9 @@ import "./Gift.css";
 import KhwishPatternImage from "../../assets/blue_pattern.svg";
 import GiftImage from "../../assets/gift.svg";
 import GiftPopup from "../../components/GiftPopup";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
-import { blue } from "@material-ui/core/colors";
-import { useNavigate } from "react-router-dom";
+import { LinearProgress, CircularProgress, Button } from "@mui/material";
+import { withStyles } from "@mui/styles";
+import { blue } from "@mui/material/colors";
 
 const BorderLinearProgress = withStyles({
   root: {

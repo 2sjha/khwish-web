@@ -5,15 +5,11 @@ import GreenTick from "../../assets/green_tick.png";
 import Cross from "../../assets/cross.png";
 import GiftIcon from "../../assets/gift.svg";
 import GooglePlayBadge from "../../assets/google-play-badge.png";
-
-import { withStyles } from "@material-ui/core/styles";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { blue } from "@material-ui/core/colors";
+import { Button, CardContent, CardMedia, Typography } from "@mui/material";
+import { withStyles } from "@mui/styles";
 import { Navigate, Link } from "react-router-dom";
 import KhwishCard from "../../components/KhwishCard";
+import { blue } from "@mui/material/colors";
 
 const OKButton = withStyles({
   root: {
