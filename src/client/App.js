@@ -1,14 +1,16 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import history from './services/history';
-import Routes from './routes';
+import AllRoutes from './routes';
 
-function App() {
-  return (
-    <Router history={history}>
-      <Routes />
-    </Router>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <Router history={history} location="/">
+        <AllRoutes />
+      </Router>
+    );
+  }
 }
 
 export default App;

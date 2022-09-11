@@ -1,14 +1,14 @@
 import React from "react";
 import "./Gift.css";
 import KhwishPatternImage from "../../assets/blue_pattern.svg";
-import GiftImage from "../../assets/gift.png";
+import GiftImage from "../../assets/gift.svg";
 import GiftPopup from "../../components/GiftPopup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
-import { Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BorderLinearProgress = withStyles({
   root: {
@@ -91,7 +91,9 @@ class Gift extends React.Component {
     if (eventDetails == null || eventDetails.event_date == null) {
       return "Event Date not set.";
     } else {
-      new Date(eventDetails.event_date * 1000).toDateString();
+      console.log(eventDetails.event_date);
+      let eventDate = new Date(eventDetails.event_date * 1000);
+      return eventDate.toDateString();
     }
   };
 
@@ -140,7 +142,7 @@ class Gift extends React.Component {
 
             <div className="Goal-card-amount-details-container">
               <p className="Goal-card-amount">
-                &#8377; {collectedAmount}/{totalAmount}
+                $ {collectedAmount}/{totalAmount}
               </p>
 
               <p className="Goal-card-percentage">
@@ -165,49 +167,51 @@ class Gift extends React.Component {
         <p className="Loading-text">Loading</p>
       </div>
     ) : errorRedirect ? (
-      <Redirect to="/error" />
+      <Navigate to="/error" replace />
     ) : (
       <div className="Gift-main">
         <div className="Event-image-container">
           <img src={KhwishPatternImage} alt="event" className="Event-image" />
-          <div className="Event-image-text">KHWISH</div>
+          <h1 className="Event-image-text">KHWISH</h1>
         </div>
 
         <div className="Event-Details-container">
-          <p className="Event-title">{eventDetails.name}</p>
-          <p className="Event-date">{this.getEventDate(eventDetails)}</p>
-          {/* TODO Add event location here */}
-          {/* <p className="Event-location">my birthday party at Ritz Carlton, Banglore</p> */}
+          {/* <div className="Event-header-contribute-container"> */}
+            <h1 className="Event-title">{eventDetails.name}</h1>
+            <p className="Event-date">{this.getEventDate(eventDetails)}</p>
+            {/* TODO Add event location here */}
+            {/* <p className="Event-location">my birthday party at Ritz Carlton, Banglore</p> */}
+
+            <div className="Contribute-button-container">
+              <GiftPopup
+                trigger={
+                  <ContributeButton
+                    variant="contained"
+                    color="primary"
+                    onClick={() => this.redirectToEvent()}
+                  >
+                    <img src={GiftImage} className="Gift-icon" alt="gift"></img>
+                    <span className="Contribute-button-text">CONTRIBUTE</span>
+                  </ContributeButton>
+                }
+                eventDetails={eventDetails}
+              />
+            {/* </div> */}
+          </div>
+
+          <div className="Event-description">
+            <p>{eventDetails.description}</p>
+          </div>
+
+          <div className="Goals-rectangle-container">
+            <div className="Goals-rectangle">Goals</div>
+          </div>
+
+          <hr className="Line-divider" size="1"></hr>
+
+          <div className="Goal-cards-container">{goalCards}</div>
+          <br />
         </div>
-
-        <div className="Contribute-button-container">
-          <GiftPopup
-            trigger={
-              <ContributeButton
-                variant="contained"
-                color="primary"
-                onClick={() => this.redirectToEvent()}
-              >
-                <img src={GiftImage} className="Gift-icon" alt="gift"></img>
-                <span className="Contribute-button-text">CONTRIBUTE</span>
-              </ContributeButton>
-            }
-            eventDetails={eventDetails}
-          />
-        </div>
-
-        <div className="Event-description">
-          <p>{eventDetails.description}</p>
-        </div>
-
-        <div className="Goals-rectangle-container">
-          <div className="Goals-rectangle">Goals</div>
-        </div>
-
-        <hr className="Line-divider" size="1"></hr>
-
-        <div className="Goal-cards-container">{goalCards}</div>
-        <br />
       </div>
     );
   }

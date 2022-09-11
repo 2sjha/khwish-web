@@ -3,11 +3,13 @@ import "./Error.css";
 import { Link } from "react-router-dom";
 import ErrorImg from "../../assets/oops.png"
 
-function Error() {
-  return (
+
+class Error extends React.Component {
+  render() {
+    return (
     <div className="Error-main">
       <div className="Error-text">
-        <img src={ErrorImg}  className ="Error-image"/>
+        <img src={ErrorImg} className="Error-image" />
         <p>Oops, Something went wrong</p>
         <br />
         <p>
@@ -16,7 +18,8 @@ function Error() {
         </p>
       </div>
     </div>
-  );
+    );
+  }
 }
 
 export default Error;

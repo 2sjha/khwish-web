@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { setupAxios } = require("./restApi/setupAxios");
 const RestApi = require("./restApi/RestApi");
 const ApiConstants = require("./restApi/ApiConstants");
+const DummyData = require("./restApi/DummyData")
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -32,6 +33,11 @@ app.get("/thanks", (_request, response) => {
 });
 
 app.get("/thanks-details", async (request, response) => {
+  if(req.query["goal-id"] === 'dummy-goal-id') {
+    res.send(DummyData.DUMMY_GOAL_DATA);
+    return Promise.resolve(1);
+  }
+
   const goal_id = request.query["goal-id"];
   const params = { "goal-id": goal_id };
   try {
@@ -52,6 +58,12 @@ app.get("/thanks-details", async (request, response) => {
 });
 
 app.get("/event-details", async (req, res) => {
+  if(req.query["event-id"] === "dummy-event-id") {
+    console.log(DummyData.DUMMY_EVENT_DATA);
+    res.send(DummyData.DUMMY_EVENT_DATA);
+    return Promise.resolve(1);
+  }
+
   const params = { "event-id": req.query["event-id"] };
   try {
     const response = await RestApi.GET(
@@ -71,9 +83,7 @@ app.get("/event-details", async (req, res) => {
 });
 
 app.post("/payment-request", async (request, response) => {
-  const body = request.body;
-  var goalId = body.goal_id;
-  const params = { amount: body.amount, goal_id: goalId };
+  const params = { amount: request.body.amount, goal_id: request.body.goal_id };
 
   try {
     const res = await RestApi.POST(

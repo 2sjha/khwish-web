@@ -3,7 +3,7 @@ import "./Thanks.css";
 
 import GreenTick from "../../assets/green_tick.png";
 import Cross from "../../assets/cross.png";
-import GiftIcon from "../../assets/gift.png";
+import GiftIcon from "../../assets/gift.svg";
 import GooglePlayBadge from "../../assets/google-play-badge.png";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -12,7 +12,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { blue } from "@material-ui/core/colors";
-import { Redirect, Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import KhwishCard from "../../components/KhwishCard";
 
 const OKButton = withStyles({
@@ -94,7 +94,7 @@ class Thanks extends React.Component {
 
   render() {
     return this.state.onSubmitError ? (
-      <Redirect to="/error" />
+      <Navigate to="/error" replace />
     ) : (
       <div className="Thanks-main">
         <KhwishCard>

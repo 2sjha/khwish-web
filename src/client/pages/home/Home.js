@@ -1,56 +1,69 @@
 import React from "react";
 import "./Home.css";
 import KhwishCard from "../../components/KhwishCard";
-import GiftIcon from "../../assets/gift.png";
-import GooglePlayBadge from "../../assets/google-play-badge.png";
+import KhwishIcon from "../../assets/khwish-icon.png";
+import GitHubBadge from "../../assets/github-badge.png";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
-function Home() {
-  return (
-    <div className="Home-main">
-      <KhwishCard>
-        <br />
-        <br />
-        <br />
-        <br />
+const TestButton = withStyles({
+  root: {
+    backgroundColor: "#4c6fd6",
+    borderRadius: "5px",
+    color: "#ffffff",
+    "&:hover": {
+      backgroundColor: "#587ef0",
+    },
+  },
+})(Button);
 
-        <div className="Home-gift-icon-container">
-          <img src={GiftIcon} alt="event" className="Home-Gift-icon" />
+class Home extends React.Component {
+
+  render() {
+    return (
+      <div className="Home-main">
+        <KhwishCard>
+          <br />
+
+          <div className="Home-khwish-icon-container">
+            <img src={KhwishIcon} alt="event" className="Home-Khwish-icon" />
+          </div>
+          <a href="https://gist.github.com/2sjha/b9012f396290bf3b8ebfc2b89fcd01c4" style={{textDecoration: "none"}}>
+            <h2 className="Home-Khwish-card-header">KHWISH</h2>
+          </a>
+
+          <CardContent>
+            <p className="Home-Khwish-card-text">
+              Use Khwish App to create Events and collect gift and contributions
+              in a smart way. <br /> <br /> You can share those events with your friends, and they can contribute using this website.
+            </p>
+          </CardContent>
+        </KhwishCard>
+
+        <div className="Sample-flow-button-container">
+          <TestButton className="Sample-flow-button" variant="contained" onClick={() => {useNavigate("/gift?event-id=dummy-event-id");}}>
+            How this works
+          </TestButton>
         </div>
 
-        <h1 className="Home-Khwish-card-header">KHWISH</h1>
-
-        <CardContent>
-          <Typography
-            className="Home-Khwish-card-text"
-            variant="subtitle2"
-            align="center"
-          >
-            Use Khwish App to create Events and collect gift and contributions
-            in a smart way.
-          </Typography>
-        </CardContent>
-      </KhwishCard>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <div className="Google-Play-image-container">
-        <a href="https://play.google.com/store/apps/details?id=com.khwish.app">
-          <img
-            alt="Get it on Google Play"
-            src={GooglePlayBadge}
-            className="Google-Play-image"
-            align="center"
-          />
-        </a>
-      </div>
-    </div>
-  );
+        <div className="Footer-container">
+          <div className="Github-image-container">
+            <a href="https://www.github.com/2sjha/khwish-app" style={{textDecoration: "none"}}>
+              <img
+                alt="Check the Khwish App on Github"
+                src={GitHubBadge}
+                className="Github-image"
+                align="center"
+              />
+              <p className="Github-text">Check the Khwish App on Github</p>
+            </a>
+          </div>
+        </div>
+      </div >
+    );
+  }
 }
 
 export default Home;

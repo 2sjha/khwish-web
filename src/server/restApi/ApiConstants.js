@@ -5,8 +5,8 @@ KHWISH_HEADERS = {
 };
 
 // KHWISH_STG_BASE_URL = "http://localhost:8080";
-KHWISH_STG_BASE_URL = "http://64.225.84.49";
-KHWISH_PROD_BASE_URL = "http://68.183.245.105";
+KHWISH_STG_BASE_URL = "http://1.1.1.1";
+KHWISH_PROD_BASE_URL = "http://1.1.1.1";
 
 exports.KHWISH_HEADERS = KHWISH_HEADERS;
 
